@@ -170,14 +170,28 @@ class MainViewController: UIViewController{
 extension MainViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status{
-        case .denied, .restricted:
-            let controller = UIAlertController(title: "We need your location to plot your location!", message: nil, preferredStyle: .alert)
+        case .denied:
+            print("Denied")
+            let controller = UIAlertController(title: "We need to use your location!", message: "Please enable location services and give us permission to use your location in Settings", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { (action) in
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        
+                    })
+                }
+            }))
+            controller.addAction(UIAlertAction(title: "I don't want the app to work", style: .destructive, handler: nil))
             show(controller, sender: self)
+        case .restricted:
+            print("Restricted")
         case .notDetermined:
+            print("Not determined")
             locationManager.requestAlwaysAuthorization()
-        case .authorizedAlways:
-            locationManager.startUpdatingLocation()
-        case .authorizedWhenInUse:
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("Allowed")
             locationManager.startUpdatingLocation()
         }
     }
