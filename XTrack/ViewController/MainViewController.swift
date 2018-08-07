@@ -29,11 +29,9 @@ class MainViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         setupMap()
         setupLocationServices()
         setupPersistence()
-        
         load()
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
@@ -54,15 +52,6 @@ class MainViewController: UIViewController{
         locationManager.startUpdatingLocation()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//
-//        reloadPins()
-//        centerMap(animated: false)
-//    }
-    
-    
     @IBAction func centerPressed(_ sender: Any) {
         centerMap()
     }
@@ -79,18 +68,12 @@ class MainViewController: UIViewController{
         }
     }
     
-    func setupUI(){
-        clearButton.setTitle(String.fontAwesomeIcon(name: .trash), for: .normal)
-        centerButton.setTitle(String.fontAwesomeIcon(name: .crosshairs), for: .normal)
-    }
-    
     func setupLocationServices(){
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
-        
     }
     
     func setupPersistence(){
@@ -202,9 +185,6 @@ extension MainViewController: CLLocationManagerDelegate{
             persistLocation(at: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
         }
         save()
-        if geoCoding{
-            return
-        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -212,13 +192,11 @@ extension MainViewController: CLLocationManagerDelegate{
             manager.stopMonitoringSignificantLocationChanges()
             return
         }
-        // Notify the user of any errors.
     }
     
 }
 
 extension MainViewController: MKMapViewDelegate{
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation{
             return nil
@@ -232,7 +210,6 @@ extension MainViewController: MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
         if geoCoding{
             return
         }
