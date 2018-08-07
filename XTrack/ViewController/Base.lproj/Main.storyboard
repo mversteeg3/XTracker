@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Awesome-5-Brands-Regular-400.otf">
+            <string>FontAwesome5BrandsRegular</string>
+        </array>
+        <array key="Font-Awesome-5-Free-Regular-400.otf">
+            <string>FontAwesome5FreeRegular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="XTrack" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rOn-tm-mrv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MI-dh-haM">
+                                <rect key="frame" x="310" y="607" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7Xb-U1-nIC"/>
+                                    <constraint firstAttribute="width" constant="40" id="9e7-5p-yrV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FontAwesome5FreeRegular" family="Font Awesome 5 Free" pointSize="17"/>
+                                <state key="normal" title="∆"/>
+                                <connections>
+                                    <action selector="centerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J27-PX-kPg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmM-sv-AXe">
+                                <rect key="frame" x="249" y="607" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Tn2-DX-hKq"/>
+                                    <constraint firstAttribute="width" constant="40" id="kbV-Cb-cep"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FontAwesome5BrandsRegular" family="Font Awesome 5 Brands" pointSize="17"/>
+                                <state key="normal" title="∆"/>
+                                <connections>
+                                    <action selector="clearPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WLF-Dc-WFg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BmM-sv-AXe" firstAttribute="top" secondItem="5MI-dh-haM" secondAttribute="top" id="4zV-h0-rHN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5MI-dh-haM" secondAttribute="trailing" constant="25" id="Epw-9q-xbM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5MI-dh-haM" secondAttribute="bottom" constant="20" id="X77-dX-iRh"/>
+                            <constraint firstItem="rOn-tm-mrv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XHx-G7-n96"/>
+                            <constraint firstItem="rOn-tm-mrv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yv3-oi-g4o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rOn-tm-mrv" secondAttribute="bottom" id="oRo-Fs-AiJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rOn-tm-mrv" secondAttribute="trailing" id="sBD-5c-5JF"/>
+                            <constraint firstItem="5MI-dh-haM" firstAttribute="leading" secondItem="BmM-sv-AXe" secondAttribute="trailing" constant="21" id="zro-kn-8ll"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="centerButton" destination="5MI-dh-haM" id="Z9e-6n-DnB"/>
+                        <outlet property="clearButton" destination="BmM-sv-AXe" id="oaE-ia-rN4"/>
+                        <outlet property="map" destination="rOn-tm-mrv" id="mB8-Ol-zvN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

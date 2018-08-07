@@ -1,0 +1,6 @@
+framework module Pods_XTrackTests {
+  umbrella header "Pods-XTrackTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
